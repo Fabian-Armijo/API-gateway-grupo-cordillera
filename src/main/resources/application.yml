@@ -1,4 +1,3 @@
-
 server:
   port: 8090  # Puerto de entrada para todo el sistema
 
@@ -6,8 +5,8 @@ spring:
   cloud:
     gateway:
       routes:
-        # Ruta para el microservicio de Gestión de Datos
+        # Ruta para el microservicio de Gestion de Datos
         - id: gestion-datos-route
-          uri: http://localhost:8080  # Dirección donde corre tu microservicio actual
+          uri: http://localhost:8082  # Direccion donde corre tu microservicio actual
           predicates:
             - Path=/api/** # Todo lo que empiece por /api se redirige
