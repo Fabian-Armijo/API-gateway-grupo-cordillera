@@ -51,3 +51,8 @@ spring:
           uri: http://localhost:8084
           predicates:
             - Path=/api/sucursales/**
+
+        - id: ms-kpi
+          uri: http://localhost:8087
+          predicates:
+            - Path=/api/kpi/**
