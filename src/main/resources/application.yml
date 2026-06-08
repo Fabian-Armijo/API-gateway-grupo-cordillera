@@ -18,52 +18,51 @@ spring:
               - OPTIONS
             allowedHeaders: "*"
       routes:
-        # --- MICROSERVICIOS PROTEGIDOS CON JWT ---
+        # --- BFF ---
+        - id: bff-catalogo
+          uri: http://localhost:8086
+          predicates:
+            - Path=/bff/**
+
+        # --- MICROSERVICIOS ---
         - id: ms-productos
           uri: http://localhost:8082
           predicates:
             - Path=/api/productos/**
-          filters:
-            - AuthenticationFilter # <-- Valida el JWT antes de dejar pasar
 
         - id: ms-categorias
           uri: http://localhost:8083
           predicates:
             - Path=/api/categorias/**
-          filters:
-            - AuthenticationFilter
 
         - id: ms-stock
           uri: http://localhost:8085
           predicates:
             - Path=/api/stock/**
-          filters:
-            - AuthenticationFilter
 
         - id: ms-ventas
           uri: http://localhost:8081
           predicates:
             - Path=/api/ventas/**
-          filters:
-            - AuthenticationFilter
 
         - id: ms-sucursales
           uri: http://localhost:8084
           predicates:
             - Path=/api/sucursales/**
-          filters:
-            - AuthenticationFilter
 
         - id: ms-kpi
           uri: http://localhost:8087
           predicates:
             - Path=/api/kpi/**
-          filters:
-            - AuthenticationFilter
 
+        # --- REPORTES ---
+        - id: ms-reportes
+          uri: http://localhost:8089
+          predicates:
+            - Path=/api/reportes/**
+
+        # --- AUTENTICACIÓN ---
         - id: ms-autenticacion
-          uri: http://localhost:8088
+          uri: http://localhost:8091  # Apuntando correctamente a tu puerto 8091
           predicates:
             - Path=/api/auth/**
-          filters:
-            - AuthenticationFilter
