@@ -67,3 +67,8 @@ spring:
             - Path=/api/auth/**
           filters:
             - AuthenticationFilter
+
+        - id: ms-integracion-datos
+          uri: http://localhost:8000
+          predicates:
+            - Path=/api/integracion/**
